@@ -6,8 +6,8 @@ void resetDriveEncoders();
 
 void setDriveMotors();
 
-void translate(double degrees, double speed);
+void translate(double degrees, double voltage);
 
-void translateAndIntake(double degrees, double speed, double stopIntakeAt);
+void translateAndIntake(double degrees, double voltage, double stopIntakeAt);
 
-void rotate(double degrees, double speed);
+void rotate(double degrees, double voltage);

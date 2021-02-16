@@ -14,24 +14,24 @@
 
 void skills() {
   deploy();
-  translateAndIntake(1300, 100, 1000);
+  translateAndIntake(1650, 80, 1000);
   rotate(-135, 100);
-  translate(1500, 100);
+  translate(1650, 100);
   score(1);
-  translate(-800, 100);
+  translate(-1300, 100);
   rotate(45, 100);
-  translateAndIntake(700, 60, 700);
-  translate(-800, 100);
+  translateAndIntake(1100, 80, 1100);
+  translate(-250, 100);
   rotate(90, 100);
-  translate(1500, 100);
+  translateAndIntake(1900, 60, 1900);
   rotate(-90, 100);
-  translate(500, 100);
-  score(1);
+  translate(300, 100);
+  score(2);
   translate(-500, 100);
   rotate(90, 100);
-  translateAndIntake(2200, 60, 2200);
+  translateAndIntake(2100, 60, 2100);
   rotate(-45, 100);
-  translate(1400, 100);
+  translate(1500, 100);
   score(1);
   translate(-900, 100);
 }
