@@ -27,7 +27,7 @@ void setDriveMotors() {
 void translate(double degrees, double voltage) {
   double initRotation = inertial.get_rotation();
   int direction = fabs(degrees) / degrees;
-  double output = 32;
+  double output = voltage * 0.4;
   double prevValue;
   double stopped = 0;
 
@@ -38,11 +38,11 @@ void translate(double degrees, double voltage) {
     if (avgDriveEncoderValue() < fmax(fabs(degrees) - 400, fabs(degrees) * 0.69)) {
       output = fmin(output * 1.1, voltage);
     } else {
-      output = fmax(output * 0.93, voltage * 0.25);
+      output = fmax(output * 0.93, voltage * 0.4);
     }
     setDrive(output * direction - (inertial.get_rotation() - initRotation), output * direction + (inertial.get_rotation() - initRotation));
     if (fabs(prevValue - avgDriveEncoderValue()) < 1) {
-      stopped += 0.01;
+      stopped += 0.1;
     }
   }
   setDrive(0, 0);
@@ -52,27 +52,26 @@ void translate(double degrees, double voltage) {
 void translateAndIntake(double degrees, double voltage, double stopIntakeAt) {
   double initRotation = inertial.get_rotation();
   int direction = fabs(degrees) / degrees;
-  double output = 32;
+  double output = voltage * 0.4;
   double prevValue;
   double stopped = 0;
 
   resetDriveEncoders();
-  intakeLeft = 127;
-  intakeRight = 127;
+  startIntake();
   while (avgDriveEncoderValue() < fabs(degrees) && stopped < 1) {
     prevValue = avgDriveEncoderValue();
     pros::delay(10);
     if (avgDriveEncoderValue() < fmax(fabs(degrees) - 400, fabs(degrees) * 0.69)) {
       output = fmin(output * 1.1, voltage);
     } else {
-      output = fmax(output * 0.93, voltage * 0.25);
+      output = fmax(output * 0.93, voltage * 0.4);
     }
     if (avgDriveEncoderValue() > stopIntakeAt) {
       stopIntake();
     }
     setDrive(output * direction - (inertial.get_rotation() - initRotation), output * direction + (inertial.get_rotation() - initRotation));
     if (fabs(prevValue - avgDriveEncoderValue()) < 1) {
-      stopped += 0.02;
+      stopped += 0.1;
     }
   }
   setDrive(0, 0);
@@ -81,8 +80,7 @@ void translateAndIntake(double degrees, double voltage, double stopIntakeAt) {
 }
 
 void rotate(double degrees, double voltage) {
-  double initRotation = inertial.get_rotation();
-  bool direction = fabs(degrees) / degrees == 1;
+  bool direction = fabs(degrees - inertial.get_rotation()) / degrees - inertial.get_rotation() == 1;
   double kP = 14;
   double kD = 56;
   double error;
@@ -92,9 +90,9 @@ void rotate(double degrees, double voltage) {
   double done = 0;
 
   while (done < 1) {
-    prevError = degrees - (inertial.get_rotation() - initRotation);
+    prevError = degrees - inertial.get_rotation();
     pros::delay(10);
-    error = degrees - (inertial.get_rotation() - initRotation);
+    error = degrees - inertial.get_rotation();
     derivative = error - prevError;
     output = direction ? fmin(voltage, error * kP + derivative * kD) : fmax(-voltage, error * kP + derivative * kD);
     setDrive(output, -output);

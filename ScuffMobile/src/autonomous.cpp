@@ -14,25 +14,56 @@
 
 void skills() {
   deploy();
-  translateAndIntake(1650, 80, 1000);
+  translateAndIntake(1550, 60, 1200);
   rotate(-135, 100);
-  translate(1650, 100);
-  score(1);
-  translate(-1300, 100);
-  rotate(45, 100);
-  translateAndIntake(1100, 80, 1100);
-  translate(-250, 100);
-  rotate(90, 100);
-  translateAndIntake(1900, 60, 1900);
+  translate(1600, 100);
+  scoreSingle(); //goal 1
+  translate(-1100, 100);
   rotate(-90, 100);
-  translate(300, 100);
-  score(2);
+  translateAndIntake(1150, 60, 1150);
+  translate(-300, 100);
+  rotate(0, 100);
+  translateAndIntake(1700, 60, 1700);
+  rotate(-90, 100);
+  translate(400, 100);
+  scoreDouble(); //goal 2
   translate(-500, 100);
-  rotate(90, 100);
-  translateAndIntake(2100, 60, 2100);
+  rotate(0, 100);
+  translateAndIntake(2150, 60, 2150);
+  translate(-50, 60);
   rotate(-45, 100);
+  translate(1400, 100);
+  scoreSingle(); //goal 3
+  translate(-900, 100);
+  rotate(90, 100);
+  translateAndIntake(1350, 100, 1000);
+  rotate(0, 100);
+  translate(550, 100);
+  scoreSingle(); //goal 4
+  translate(-100, 100);
+  rotate(90, 100);
+  translateAndIntake(2400, 60, 2400);
+  rotate(45, 100);
   translate(1500, 100);
-  score(1);
+  scoreSingle(); //goal 5
+  translate(-1100, 100);
+  rotate(90, 100);
+  translateAndIntake(1150, 60, 1150);
+  translate(-300, 100);
+  rotate(180, 100);
+  translateAndIntake(1650, 60, 1650);
+  rotate(90, 100);
+  translate(400, 100);
+  scoreSingle();  //goal 6
+  translate(-300, 100);
+  rotate(180, 100);
+  translate(1400, 100);
+  rotate(90, 100);
+  translateAndIntake(1250, 60, 1250);
+  translate(-1000, 100);
+  rotate(135, 100);
+  translate(1500, 100);
+  scoreSingle(); //goal 7
   translate(-900, 100);
 }
 

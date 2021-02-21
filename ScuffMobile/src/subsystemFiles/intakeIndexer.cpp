@@ -9,7 +9,7 @@ void setIntakeIndexerMotors() {
   if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1) == 1 || controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2) == 1) {
     indexerBottom = 127;
   } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == 1) {
-    indexerBottom = 127;
+    indexerBottom = 62;
   } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == 1) {
     indexerBottom = -127;
   } else {
@@ -26,7 +26,7 @@ void deploy() {
 void startIntake() {
   intakeLeft = 127;
   intakeRight = 127;
-  indexerBottom = 127;
+  indexerBottom = 62;
 }
 
 void stopIntake() {
@@ -35,11 +35,29 @@ void stopIntake() {
   indexerBottom = 0;
 }
 
-void score(int balls) {
-  indexerBottom = 127;
+void scoreSingle() {
   indexerTop = 127;
-  pros::delay(150 + 100 * balls);
+  indexerBottom = 127;
+  pros::delay(250);
   indexerBottom = 0;
-  pros::delay(150 + 100 * balls);
+  pros::delay(250);
   indexerTop = 20;
+  pros::delay(100);
+}
+
+void scoreDouble() {
+  indexerTop = 127;
+  indexerBottom = 127;
+  pros::delay(150);
+  indexerBottom = 0;
+  pros::delay(150);
+  indexerTop = 0;
+  pros::delay(150);
+  indexerTop = 127;
+  indexerBottom = 127;
+  pros::delay(250);
+  indexerBottom = 0;
+  pros::delay(250);
+  indexerTop = 20;
+  pros::delay(100);
 }
