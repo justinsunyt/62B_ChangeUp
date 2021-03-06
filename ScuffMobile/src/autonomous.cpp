@@ -20,17 +20,17 @@ void skills() {
   scoreSingle(); //goal 1
   translate(-1100, 100);
   rotate(-90, 100);
-  translateAndIntake(1150, 60, 1150);
+  translateAndIntake(1200, 60, 1200);
   translate(-300, 100);
   rotate(0, 100);
-  translateAndIntake(1700, 60, 1700);
+  translateAndIntake(1750, 60, 1750);
   rotate(-90, 100);
   translate(400, 100);
   scoreDouble(); //goal 2
   translate(-500, 100);
   rotate(0, 100);
   translateAndIntake(2150, 60, 2150);
-  translate(-50, 60);
+  translate(-100, 60);
   rotate(-45, 100);
   translate(1400, 100);
   scoreSingle(); //goal 3
@@ -42,16 +42,16 @@ void skills() {
   scoreSingle(); //goal 4
   translate(-100, 100);
   rotate(90, 100);
-  translateAndIntake(2400, 60, 2400);
+  translateAndIntake(2350, 60, 2350);
   rotate(45, 100);
   translate(1500, 100);
   scoreSingle(); //goal 5
   translate(-1100, 100);
   rotate(90, 100);
-  translateAndIntake(1150, 60, 1150);
+  translateAndIntake(1200, 60, 1200);
   translate(-300, 100);
   rotate(180, 100);
-  translateAndIntake(1650, 60, 1650);
+  translateAndIntake(1700, 60, 1700);
   rotate(90, 100);
   translate(400, 100);
   scoreSingle();  //goal 6
@@ -59,12 +59,18 @@ void skills() {
   rotate(180, 100);
   translate(1400, 100);
   rotate(90, 100);
-  translateAndIntake(1250, 60, 1250);
-  translate(-1000, 100);
+  translateAndIntake(1400, 60, 1400);
+  translate(-800, 100);
   rotate(135, 100);
-  translate(1500, 100);
+  translate(1600, 100);
   scoreSingle(); //goal 7
-  translate(-900, 100);
+  translateAndIntake(-2400, 100, 500);
+  rotate(270, 100);
+  translate(500, 100);
+  rotate(360, 100);
+  translate(1500, 127);
+  scoreSingle(); //goal 8
+  translate(-1000, 127);
 }
 
 void autonomous() {
