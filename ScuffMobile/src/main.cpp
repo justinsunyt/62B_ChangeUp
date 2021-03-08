@@ -26,7 +26,6 @@ void initialize() {
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "Scuff 100");
 	pros::lcd::register_btn1_cb(on_center_button);
-
 	indexerTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	intakeLeft.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	intakeRight.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);

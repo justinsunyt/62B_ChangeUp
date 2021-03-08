@@ -8,6 +8,4 @@ void startIntake();
 
 void stopIntake();
 
-void scoreSingle();
-
-void scoreDouble();
+void score(int balls);
