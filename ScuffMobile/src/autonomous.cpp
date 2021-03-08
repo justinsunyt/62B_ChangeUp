@@ -74,7 +74,7 @@ void skills() {
   rotate(10);
   translateFast(2500, 0);
   score(1); //goal 9
-  translate(-1000, 0);
+  translate(-690, 0);
 }
 
 void autonomous() {
