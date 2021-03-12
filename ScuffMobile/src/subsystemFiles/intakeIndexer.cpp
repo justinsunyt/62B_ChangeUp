@@ -23,10 +23,13 @@ void deploy() {
   indexerTop = 20;
 }
 
-void startIntake() {
-  intakeLeft = 127;
-  intakeRight = 127;
-  indexerBottom = 60;
+void startIntake(bool direction, bool indexer) {
+  int dir = direction ? 1 : -1;
+  intakeLeft = dir * 127;
+  intakeRight = dir * 127;
+  if (indexer) {
+    indexerBottom = dir * 60;
+  }
 }
 
 void stopIntake() {

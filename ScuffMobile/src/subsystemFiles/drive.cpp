@@ -74,9 +74,38 @@ void translateDumb(double distance) {
   pros::delay(100);
 }
 
-void translateAndIntake(double distance, double angle) {
-  startIntake();
+void translateAndIntake(double distance, double angle, bool indexer) {
+  startIntake(true, indexer);
   translate(distance, angle);
+  stopIntake();
+}
+
+void translateAndOuttake(double distance, double angle) {
+  bool direction = fabs(distance) / distance == 1;
+  double kP = 0.25;
+  double kD = 0;
+  double error;
+  double prevError;
+  double derivative;
+  double output;
+  double done = 0;
+  resetDriveEncoders();
+  while (done < 1) {
+    prevError = fabs(distance) / distance * (fabs(distance) - avgDriveEncoderValue());
+    pros::delay(10);
+    error = fabs(distance) / distance * (fabs(distance) - avgDriveEncoderValue());
+    derivative = error - prevError;
+    output = direction ? fmin(80, error * kP + derivative * kD) : fmax(-80, error * kP + derivative * kD);
+    setDrive(output - (inertial.get_rotation() - angle), output + (inertial.get_rotation() - angle));
+    if (fabs(error) < 5 || fabs(derivative) < 5) {
+      done += 0.1;
+    }
+    if (fabs(error) < 400) {
+      startIntake(false, false);
+    }
+  }
+  setDrive(0, 0);
+  pros::delay(100);
   stopIntake();
 }
 

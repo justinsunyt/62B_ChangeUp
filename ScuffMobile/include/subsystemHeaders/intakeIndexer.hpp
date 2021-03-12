@@ -4,7 +4,7 @@ void setIntakeIndexerMotors();
 
 void deploy();
 
-void startIntake();
+void startIntake(bool direction, bool indexer);
 
 void stopIntake();
 

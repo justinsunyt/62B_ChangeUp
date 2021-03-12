@@ -12,24 +12,24 @@
  * from where it left off.
  */
 
-void skills() {
+void skills109() {
   deploy();
-  translateAndIntake(1700, 0);
+  translateAndIntake(1700, 0, true);
   rotate(-135);
   translate(1600, -135);
   score(2); //goal 1
   translate(-1450, -135);
   rotate(-90);
-  translateAndIntake(1100, -90);
+  translateAndIntake(1100, -90, true);
   translate(-500, -90);
   rotate(0);
-  translateAndIntake(1850, 0);
+  translateAndIntake(1850, 0, true);
   rotate(-90);
   translate(400 ,-90);
   score(3); //goal 2
   translate(-800, -90);
   rotate(0);
-  translateAndIntake(2150, 0);
+  translateAndIntake(2150, 0, true);
   rotate(-45);
   translate(1500, -45);
   score(3); //goal 3
@@ -41,16 +41,16 @@ void skills() {
   score(2); //goal 4
   translate(-250, 0);
   rotate(90);
-  translateAndIntake(2500, 90);
+  translateAndIntake(2500, 90, true);
   rotate(45);
   translate(1500, 45);
   score(2); //goal 5
   translate(-1450, 45);
   rotate(90);
-  translateAndIntake(1100, 90);
+  translateAndIntake(1100, 90, true);
   translate(-500, 90);
   rotate(180);
-  translateAndIntake(1850, 180);
+  translateAndIntake(1850, 180, true);
   rotate(90);
   translate(400, 90);
   score(3);  //goal 6
@@ -59,14 +59,14 @@ void skills() {
   translate(2000, 180);
   translate(-200, 180);
   rotate(90);
-  translateAndIntake(1100, 90);
+  translateAndIntake(1100, 90, true);
   translate(-1100, 90);
   rotate(135);
   translate(1600, 135);
   score(3); //goal 7
   translate(-2400, 135);
   rotate(270);
-  translateAndIntake(1200, 270);
+  translateAndIntake(1200, 270, true);
   rotate(180);
   translate(1500, 180);
   score(3); //goal 8
@@ -86,6 +86,149 @@ void skills() {
   stopIntake();
 }
 
+void skills116() {
+  deploy();
+  translateAndIntake(1700, 0, true);
+  rotate(-135);
+  translateAndIntake(1700, -135, false);
+
+  //goal 1
+  indexerTop = 127;
+  pros::delay(400);
+  indexerTop = 20;
+  stopIntake();
+  pros::delay(100);
+
+  translateAndOuttake(-1450, -135);
+  rotate(-90);
+  translateAndIntake(1100, -90, true);
+  translate(-500, -90);
+  rotate(0);
+  translateAndIntake(1850, 0, true);
+  rotate(-90);
+  translateAndIntake(400 ,-90, false);
+
+  //goal 2
+  indexerTop = 127;
+  pros::delay(300);
+  indexerTop = 20;
+  stopIntake();
+  pros::delay(100);
+
+  translateAndOuttake(-800, -90);
+  rotate(0);
+  translateAndIntake(2000, 0, true);
+  rotate(-45);
+  translateAndIntake(1700, -45, false);
+
+  //goal 3
+  indexerTop = 127;
+  pros::delay(400);
+  indexerTop = 20;
+  pros::delay(200);
+
+  translateAndOuttake(-1000, -45);
+  rotate(90);
+  translate(2200, 90);
+  rotate(0);
+  translate(700, 0);
+
+  //goal 4
+  indexerTop = 127;
+  indexerBottom = 127;
+  pros::delay(200);
+  indexerBottom = 0;
+  pros::delay(200);
+  indexerTop = 20;
+  pros::delay(100);
+
+  translate(-250, 0);
+  rotate(90);
+  translateAndIntake(2500, 90, true);
+  rotate(45);
+  translateAndIntake(1600, 45, false);
+
+  //goal 5
+  indexerTop = 127;
+  pros::delay(400);
+  indexerTop = 20;
+  stopIntake();
+  pros::delay(100);
+
+  translateAndOuttake(-1450, 45);
+  rotate(90);
+  translateAndIntake(1100, 90, true);
+  translate(-500, 90);
+  rotate(180);
+  translateAndIntake(1850, 180, true);
+  rotate(90);
+  translateAndIntake(500, 90, false);
+
+  //goal 6
+  indexerTop = 127;
+  pros::delay(300);
+  indexerTop = 20;
+  stopIntake();
+  pros::delay(100);
+
+  translateAndOuttake(-800, 90);
+  rotate(180);
+  translate(2000, 180);
+  translate(-200, 180);
+  rotate(90);
+  translateAndIntake(1500, 90, true);
+  translate(-1100, 90);
+  rotate(135);
+  translateAndIntake(1700, 135, false);
+
+  //goal 7
+  indexerTop = 127;
+  pros::delay(400);
+  indexerTop = 20;
+  pros::delay(200);
+
+  translateAndOuttake(-2400, 135);
+  rotate(270);
+  translateAndIntake(1200, 270, true);
+  rotate(180);
+  translateAndIntake(1700, 180, false);
+
+  //goal 8
+  indexerTop = 127;
+  pros::delay(300);
+  indexerTop = 20;
+  stopIntake();
+  pros::delay(100);
+
+  translateAndOuttake(-800, 180);
+  rotate(10);
+  intakeLeft = -127;
+  translate(600, 0);
+  translateDumb(1000);
+  translateDumb(-800);
+  translateDumb(1000);
+  translateDumb(-800);
+  translateDumb(1000);
+
+  //goal 9
+  indexerTop = 127;
+  indexerBottom = 127;
+  pros::delay(200);
+  indexerBottom = 0;
+  pros::delay(200);
+  indexerTop = 20;
+  pros::delay(100);
+  indexerTop = 127;
+  indexerBottom = 127;
+  pros::delay(1000);
+  indexerTop = 20;
+  indexerBottom = 0;
+  pros::delay(100);
+
+  translateDumb(-800);
+  stopIntake();
+}
+
 void autonomous() {
-  skills();
+  skills116();
 }
