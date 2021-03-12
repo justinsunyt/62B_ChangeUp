@@ -57,24 +57,33 @@ void skills() {
   translate(-400, 90);
   rotate(180);
   translate(2000, 180);
-  translate(-100, 180);
+  translate(-200, 180);
   rotate(90);
   translateAndIntake(1100, 90);
   translate(-1100, 90);
   rotate(135);
   translate(1600, 135);
   score(3); //goal 7
-  translate(-1600, 135);
+  translate(-2400, 135);
   rotate(270);
-  translateAndIntake(1850, 270);
+  translateAndIntake(1200, 270);
   rotate(180);
-  translate(1200, 180);
-  score(2); //goal 8
+  translate(1500, 180);
+  score(3); //goal 8
   translate(-300, 180);
   rotate(10);
-  translateFast(2500, 0);
+  intakeLeft = -127;
+  intakeRight = -127;
+  translate(1200, 0);
+  translateDumb(800);
+  translateDumb(-600);
+  translateDumb(800);
+  translateDumb(-600);
+  translateDumb(800);
+  score(2); //goal 9
   score(1); //goal 9
-  translate(-690, 0);
+  translateDumb(-600);
+  stopIntake();
 }
 
 void autonomous() {

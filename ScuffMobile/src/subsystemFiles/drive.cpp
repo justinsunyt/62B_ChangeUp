@@ -49,7 +49,7 @@ void translate(double distance, double angle) {
   pros::delay(100);
 }
 
-void translateFast(double distance, double angle) {
+void translateDumb(double distance) {
   bool direction = fabs(distance) / distance == 1;
   double kP = 0.25;
   double kD = 0;
@@ -64,8 +64,8 @@ void translateFast(double distance, double angle) {
     pros::delay(10);
     error = fabs(distance) / distance * (fabs(distance) - avgDriveEncoderValue());
     derivative = error - prevError;
-    output = direction ? fmin(110, error * kP + derivative * kD) : fmax(-110, error * kP + derivative * kD);
-    setDrive(output - (inertial.get_rotation() - angle), output + (inertial.get_rotation() - angle));
+    output = direction ? fmin(127, error * kP + derivative * kD) : fmax(-127, error * kP + derivative * kD);
+    setDrive(output, output);
     if (fabs(error) < 5 || fabs(derivative) < 5) {
       done += 0.1;
     }
