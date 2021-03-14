@@ -86,7 +86,7 @@ void skills109() {
   stopIntake();
 }
 
-void skills116() {
+void skills115() {
   deploy();
   translateAndIntake(1700, 0, true);
   rotate(-135);
@@ -102,36 +102,37 @@ void skills116() {
   translateAndOuttake(-1450, -135);
   rotate(-90);
   translateAndIntake(1100, -90, true);
-  translate(-500, -90);
+  translate(-550, -90);
   rotate(0);
-  translateAndIntake(1850, 0, true);
+  translateAndIntake(1900, 0, true);
   rotate(-90);
-  translateAndIntake(400 ,-90, false);
+  translateAndIntake(400 ,-90, false); //penis in my mouth
 
   //goal 2
   indexerTop = 127;
-  pros::delay(300);
+  pros::delay(250);
   indexerTop = 20;
   stopIntake();
   pros::delay(100);
 
-  translateAndOuttake(-800, -90);
+  translateAndOuttake(-850, -90);
   rotate(0);
-  translateAndIntake(2000, 0, true);
+  translateAndIntake(2100, 0, true);
+  translate(-200, 0);
   rotate(-45);
-  translateAndIntake(1700, -45, false);
+  translate(1700, -45);
 
   //goal 3
   indexerTop = 127;
   pros::delay(400);
   indexerTop = 20;
-  pros::delay(200);
+  pros::delay(100);
 
-  translateAndOuttake(-1000, -45);
+  translate(-1000, -45);
   rotate(90);
   translate(2200, 90);
   rotate(0);
-  translate(700, 0);
+  translateAndIntake(700, 0, false);
 
   //goal 4
   indexerTop = 127;
@@ -139,10 +140,14 @@ void skills116() {
   pros::delay(200);
   indexerBottom = 0;
   pros::delay(200);
-  indexerTop = 20;
+  indexerTop = 0;
   pros::delay(100);
 
   translate(-250, 0);
+  rotate(-90);
+  startIntake(false, false);
+  pros::delay(500);
+  stopIntake();
   rotate(90);
   translateAndIntake(2500, 90, true);
   rotate(45);
@@ -166,8 +171,8 @@ void skills116() {
 
   //goal 6
   indexerTop = 127;
-  pros::delay(300);
-  indexerTop = 20;
+  pros::delay(250);
+  indexerTop = 0;
   stopIntake();
   pros::delay(100);
 
@@ -179,19 +184,19 @@ void skills116() {
   translateAndIntake(1500, 90, true);
   translate(-1100, 90);
   rotate(135);
-  translateAndIntake(1700, 135, false);
+  translate(1700, 135);
 
   //goal 7
   indexerTop = 127;
   pros::delay(400);
   indexerTop = 20;
-  pros::delay(200);
+  pros::delay(100);
 
-  translateAndOuttake(-2400, 135);
+  translate(-2400, 135);
   rotate(270);
-  translateAndIntake(1200, 270, true);
+  translateAndIntake(1250, 270, true);
   rotate(180);
-  translateAndIntake(1700, 180, false);
+  translateAndIntake(1800, 180, false);
 
   //goal 8
   indexerTop = 127;
@@ -201,14 +206,14 @@ void skills116() {
   pros::delay(100);
 
   translateAndOuttake(-800, 180);
-  rotate(10);
+  rotate(12);
   intakeLeft = -127;
-  translate(600, 0);
-  translateDumb(1000);
-  translateDumb(-800);
-  translateDumb(1000);
-  translateDumb(-800);
-  translateDumb(1000);
+  translate(1000, 0);
+  translateDumb(800);
+  translateDumb(-600);
+  translateDumb(800);
+  translateDumb(-600);
+  translateDumb(800);
 
   //goal 9
   indexerTop = 127;
@@ -221,14 +226,12 @@ void skills116() {
   indexerTop = 127;
   indexerBottom = 127;
   pros::delay(1000);
-  indexerTop = 20;
-  indexerBottom = 0;
-  pros::delay(100);
 
-  translateDumb(-800);
+  translateDumb(-600);
   stopIntake();
+  indexerTop = 0;
 }
 
 void autonomous() {
-  skills116();
+  skills115();
 }
