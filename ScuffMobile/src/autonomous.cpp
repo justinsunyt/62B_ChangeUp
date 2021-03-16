@@ -140,7 +140,7 @@ void skills115() {
   pros::delay(200);
   indexerBottom = 0;
   pros::delay(200);
-  indexerTop = 0;
+  indexerTop = 20;
   pros::delay(100);
 
   translate(-250, 0);
@@ -172,7 +172,7 @@ void skills115() {
   //goal 6
   indexerTop = 127;
   pros::delay(250);
-  indexerTop = 0;
+  indexerTop = 20;
   stopIntake();
   pros::delay(100);
 
