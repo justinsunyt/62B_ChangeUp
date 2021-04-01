@@ -232,6 +232,45 @@ void skills115() {
   indexerTop = 0;
 }
 
+void lrt() {
+  //goal 1
+  deploy();
+
+  translate(500, 0);
+  rotate(-90);
+  translate(2350, -90);
+  rotate(-135);
+  translateAndIntake(1000, -135, false);
+
+  //goal 2
+  indexerTop = 127;
+  indexerBottom = 127;
+  pros::delay(500);
+  startIntake(false, false);
+  pros::delay(500);
+  indexerTop = 20;
+  stopIntake();
+
+  translate(-1650, -135);
+  rotate(0);
+  translateAndIntake(1300, 0, true);
+  rotate(-90);
+
+  //goal 3
+  translate(-1350, -90);
+
+  translate(200, -90);
+  rotate(-230);
+  translateDumb(5000);
+
+  //goal 4
+  indexerTop = 127;
+  indexerBottom = 127;
+  pros::delay(1000);
+  indexerTop = 0;
+  indexerBottom = 0;
+}
+
 void autonomous() {
-  skills115();
+  lrt();
 }
