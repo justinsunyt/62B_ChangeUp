@@ -26,12 +26,13 @@ void setDriveMotors() {
 
 void translate(double distance, double angle) {
   bool direction = fabs(distance) / distance == 1;
-  double kP = 0.25;
+  double kP = 0.12;
   double kD = 0;
   double error;
   double prevError;
   double derivative;
   double output;
+  double max = 40;
   double done = 0;
   resetDriveEncoders();
   while (done < 1) {
@@ -39,24 +40,27 @@ void translate(double distance, double angle) {
     pros::delay(10);
     error = fabs(distance) / distance * (fabs(distance) - avgDriveEncoderValue());
     derivative = error - prevError;
-    output = direction ? fmin(80, error * kP + derivative * kD) : fmax(-80, error * kP + derivative * kD);
+    output = direction ? fmin(max, error * kP + derivative * kD) : fmax(-max, error * kP + derivative * kD);
     setDrive(output - (inertial.get_rotation() - angle), output + (inertial.get_rotation() - angle));
-    if (fabs(error) < 5 || fabs(derivative) < 5) {
+    if (fabs(error) < 5 || fabs(derivative) < 1) {
       done += 0.1;
+    }
+    if (max < 80) {
+      max += 1;
     }
   }
   setDrive(0, 0);
-  pros::delay(100);
 }
 
-void translateDumb(double distance) {
+void translateFast(double distance, double angle) {
   bool direction = fabs(distance) / distance == 1;
-  double kP = 0.25;
+  double kP = 0.1;
   double kD = 0;
   double error;
   double prevError;
   double derivative;
   double output;
+  double max = 40;
   double done = 0;
   resetDriveEncoders();
   while (done < 1) {
@@ -64,14 +68,16 @@ void translateDumb(double distance) {
     pros::delay(10);
     error = fabs(distance) / distance * (fabs(distance) - avgDriveEncoderValue());
     derivative = error - prevError;
-    output = direction ? fmin(127, error * kP + derivative * kD) : fmax(-127, error * kP + derivative * kD);
-    setDrive(output, output);
-    if (fabs(error) < 5 || fabs(derivative) < 5) {
+    output = direction ? fmin(max, error * kP + derivative * kD) : fmax(-max, error * kP + derivative * kD);
+    setDrive(output - (inertial.get_rotation() - angle), output + (inertial.get_rotation() - angle));
+    if (fabs(error) < 5 || fabs(derivative) < 1) {
       done += 0.1;
+    }
+    if (max < 127) {
+      max += 1;
     }
   }
   setDrive(0, 0);
-  pros::delay(100);
 }
 
 void translateAndIntake(double distance, double angle, bool indexer) {
@@ -80,39 +86,10 @@ void translateAndIntake(double distance, double angle, bool indexer) {
   stopIntake();
 }
 
-void translateAndOuttake(double distance, double angle) {
-  bool direction = fabs(distance) / distance == 1;
-  double kP = 0.25;
-  double kD = 0;
-  double error;
-  double prevError;
-  double derivative;
-  double output;
-  double done = 0;
-  resetDriveEncoders();
-  while (done < 1) {
-    prevError = fabs(distance) / distance * (fabs(distance) - avgDriveEncoderValue());
-    pros::delay(10);
-    error = fabs(distance) / distance * (fabs(distance) - avgDriveEncoderValue());
-    derivative = error - prevError;
-    output = direction ? fmin(80, error * kP + derivative * kD) : fmax(-80, error * kP + derivative * kD);
-    setDrive(output - (inertial.get_rotation() - angle), output + (inertial.get_rotation() - angle));
-    if (fabs(error) < 5 || fabs(derivative) < 5) {
-      done += 0.1;
-    }
-    if (fabs(error) < 400) {
-      startIntake(false, false);
-    }
-  }
-  setDrive(0, 0);
-  pros::delay(100);
-  stopIntake();
-}
-
 void rotate(double angle) {
   bool direction = fabs(angle - inertial.get_rotation()) / (angle - inertial.get_rotation()) == 1;
-  double kP = 8;
-  double kD = 36;
+  double kP = 6;
+  double kD = 24;
   double error;
   double prevError;
   double derivative;
@@ -126,10 +103,9 @@ void rotate(double angle) {
     derivative = error - prevError;
     output = direction ? fmin(80, error * kP + derivative * kD) : fmax(-80, error * kP + derivative * kD);
     setDrive(output, -output);
-    if (fabs(error) < 1 || fabs(derivative) < 0.2) {
+    if (fabs(error) < 1) {
       done += 0.1;
     }
   }
   setDrive(0, 0);
-  pros::delay(100);
 }

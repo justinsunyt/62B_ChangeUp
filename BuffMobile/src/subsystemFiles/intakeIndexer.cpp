@@ -34,27 +34,3 @@ void stopIntake() {
   intakeRight = 0;
   indexer = 0;
 }
-
-void score(int balls) {
-  if (balls == 1) {
-    scorer = 127;
-    indexer = 127;
-    pros::delay(1000);
-    scorer = 20;
-    indexer = 0;
-    pros::delay(100);
-  } else if (balls == 2) {
-    scorer = 127;
-    indexer = 127;
-    pros::delay(200);
-    indexer = 0;
-    pros::delay(200);
-    scorer = 20;
-    pros::delay(100);
-  } else {
-    scorer = 127;
-    pros::delay(400);
-    scorer = 20;
-    pros::delay(100);
-  }
-}
