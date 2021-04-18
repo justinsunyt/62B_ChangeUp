@@ -35,10 +35,10 @@ void initialize() {
 	driveLeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 	driveRightFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 	driveRightBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-	// inertial.reset();
-	// while (inertial.is_calibrating()) {
-	// 	pros::delay(10);
-	// }
+	inertial.reset();
+	while (inertial.is_calibrating()) {
+		pros::delay(10);
+	}
 }
 
 /**

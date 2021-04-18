@@ -15,9 +15,11 @@ void setIntakeIndexerMotors() {
 }
 
 void deploy() {
-  scorer = 127;
-  pros::delay(100);
-  scorer = 20;
+  intakeLeft = 127;
+  intakeRight = 127;
+  pros::delay(200);
+  intakeLeft = 0;
+  intakeRight = 0;
 }
 
 void startIntake(bool direction, bool indexer) {
@@ -25,7 +27,7 @@ void startIntake(bool direction, bool indexer) {
   intakeLeft = dir * 127;
   intakeRight = dir * 127;
   if (indexer) {
-    indexer = dir * 60;
+    indexer = dir * 127;
   }
 }
 
